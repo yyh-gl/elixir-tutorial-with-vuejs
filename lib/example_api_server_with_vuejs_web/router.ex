@@ -19,8 +19,10 @@ defmodule ExampleApiServerWithVuejsWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", ExampleApiServerWithVuejsWeb do
-  #   pipe_through :api
-  # end
+  # Scopes for API
+   scope "/api", ExampleApiServerWithVuejsWeb do
+     pipe_through :api
+
+     resources "/articles", ArticleController, except: [:new, :edit]
+  end
 end
